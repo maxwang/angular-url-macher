@@ -9,11 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 export class OrdersComponent implements OnInit {
   folderName: string;
   constructor(route: ActivatedRoute) {
-    this.folderName = route ? route.snapshot.url.slice(1).join('/') : '';
+
+    route.url.subscribe(params => {
+      // console.log(params);
+      this.folderName = params.slice(1).join('/');
+    });
 
   }
 
   ngOnInit() {
+
   }
 
 }
